@@ -1,0 +1,196 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-lg-10">
+            <h1>Introduction App</h1>
+            a =>
+            {{a}}
+            <br>
+            b =>
+            {{b}}
+
+            <form>
+                <br>
+                Enter value a:
+                <input type="number" [(ngModel)]="a" name="vala"><br>
+                Enter value b:
+                <input type="number" [(ngModel)]="b" name="valb">
+                <br><br>
+                <button (click)="Sum()">Do The Addtion!</button>
+                <br><br>
+                <div class="alert alert-info">
+                    The sum of {{a}} + {{b}} is {{c}}
+                </div>
+                <div *ngIf='a>b'>
+                    the value of a is greater than b!
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <button class="btn btn-primary" (click)="isHidden=(!isHidden)">
+                <span *ngIf="isHidden==true">Show</span>
+                <span *ngIf="isHidden==false">Hide</span>
+            </button>
+
+            <div *ngIf="isHidden==false" class="alert alert-info">
+                this will display if the value of isHidden is false!
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <br><br>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <button class="btn btn-primary" (click)="isHidden=(!isHidden)">
+                <span *ngIf="isHidden==true">Show</span>
+                <span *ngIf="isHidden==false">Hide</span>
+            </button>
+
+            <div *ngIf="isHidden==false;  else trueDiv;" class="alert alert-info">
+                this will display if the value of isHidden is false!
+            </div>
+
+            <ng-template #trueDiv>
+
+                <div class="alert alert-danger">
+                    this will display if the value of isHidden is true!
+                </div>
+
+            </ng-template>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <br><br>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-10">
+            <ul class="nav nav-tabs">
+                <li><a href="#" (click)="tab=-1">Home</a></li>
+                <li><a href="#" (click)="tab=1">Menu 1</a></li>
+                <li><a href="#" (click)="tab=2">Menu 2</a></li>
+                <li><a href="#" (click)="tab=3">Menu 3</a></li>
+            </ul>
+            <div class="row">
+                <div class="col-md-12" [ngSwitch]="tab">
+
+                    <ng-container *ngSwitchCase="1">
+                        <h1>
+                            This is tab1
+                        </h1>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="2">
+
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="3">
+                        <h1>
+                            This is tab3
+                        </h1>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label>Enter Name:</label>
+                                <input type="text" name="name" id="name" [(ngModel)]="name" class="form-control" />
+                                <br>
+                                <button (click)="SaveData()" class="btn btn-primary">Save!</button>
+
+                            </div>
+
+                            <br>
+                            <h3>Names:</h3>
+                            <ul *ngFor='let n of arrName'>
+                                <li>{{n}}</li>
+                            </ul>
+                        </div>
+                    </ng-container>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <br><br>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <button class="btn btn-primary" (click)="isHidden=(!isHidden)">
+                <span *ngIf="isHidden==true">Show</span>
+                <span *ngIf="isHidden==false">Hide</span>
+            </button>
+
+            <div *ngIf="isHidden==false; then falseDiv;  else trueDiv;">
+                common text is here
+
+            </div>
+
+            <ng-template #falseDiv>
+
+                <div class="alert alert-warning">
+                    this will display if the value of isHidden is false!
+                </div>
+
+            </ng-template>
+
+            <ng-template #trueDiv>
+
+                <div class="alert alert-danger">
+                    this will display if the value of isHidden is true!
+                </div>
+
+            </ng-template>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <br><br>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <button 
+            class="btn"
+            [ngClass]="{
+                'btn-primary':isHidden==false,
+                'btn-danger':isHidden==true
+                }"
+            (click)="isHidden=(!isHidden)">
+                Hye! Value of isHidden is {{isHidden}}.
+            </button>
+
+        </div>
+    </div>
+
+
+    <ul *ngFor="let person of people">
+        <li [ngStyle]="{'color':getColor(person.country)}"> {{ person.name }} ({{ person.country }}) 
+        </li>
+      </ul>
+
+</div>
